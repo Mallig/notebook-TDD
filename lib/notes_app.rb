@@ -1,10 +1,18 @@
 #Note taking application
 
+class Noter
 
-def new_note(title, body)
-    @title = title
-    @body = body
-    return [@title, @body]
+    def store_note(note)
+        
+    end
+    
+end
+
+class Note
+    def initialise(title = "No Title", body = "No Body")
+        @title = title
+        @body = body
+    end
 end
 
 class Array
@@ -12,6 +20,5 @@ class Array
         puts self
     end
 end
-
 #note = new_note("Title", "body")
 #note.look

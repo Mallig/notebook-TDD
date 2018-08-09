@@ -3,12 +3,17 @@
 #        List note Titles
 #        Pick a note to read
 
-require "notes_app.rb"
+require "notes_app"
 
-describe "Noter App" do
-    it "creates a note with title and body" do
-        note = new_note("title", "body")
-        expect(note).to eq ["title", "body"]
+describe Noter do
+
+    describe "#new_note" do
+
+        it "creates a note with title and body" do
+            note = new_note("title", "body")
+            expect(note).to eq ["title", "body"]
+        end
+        
     end
 
     it "lists existing note titles" do
@@ -18,8 +23,8 @@ describe "Noter App" do
         expect(notes.titles).to eq([note_1[0], note_2[0]])
     end
 
-    it "allows user to pick a note title to read" do
-        
-    end
+    #it "allows user to pick a note title to read" do
+    #    
+    #end
 
 end
