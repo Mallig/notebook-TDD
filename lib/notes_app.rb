@@ -2,23 +2,43 @@
 
 class Noter
 
-    def store_note(note)
-        
-    end
-    
+  def initialize
+    @notes = []
+  end
+
+  def store(note_to_store)
+    @notes << note_to_store
+  end
+
+  def titles
+    @titles = []
+    @notes.each { |note| @titles << note.title }
+    @titles
+  end
+
+  def read(note_title)
+    unless titles.include?(note_title) then raise "Note does not exist" end
+    [note_title, self.find_body(note_title)]
+  end
+
+  protected
+  def find_body(note_title)
+    @notes.each { |note| return note.body if note.title == note_title }
+  end
+
 end
 
 class Note
-    def initialise(title = "No Title", body = "No Body")
-        @title = title
-        @body = body
-    end
+
+  attr_reader :title, :body
+
+  def initialize(title = "No Title", body = "No Body")
+    @title = title
+    @body = body
+    [@title, @body]
+  end
+
 end
 
-class Array
-    def look
-        puts self
-    end
-end
-#note = new_note("Title", "body")
-#note.look
+pad = Noter.new
+pad.store(Note.new(""))

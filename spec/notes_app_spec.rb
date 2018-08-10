@@ -7,24 +7,21 @@ require "notes_app"
 
 describe Noter do
 
-    describe "#new_note" do
+  let(:mockEmptyNote) {double :note, title: "Title", body: "Body"}
+  #let(:anothermockNote) {double :note, title: "Another Title", body: "Another Body"}
+  
+  it "can store notes" do
+      expect(subject.store(mockEmptyNote)).to include(mockEmptyNote)
+  end
 
-        it "creates a note with title and body" do
-            note = new_note("title", "body")
-            expect(note).to eq ["title", "body"]
-        end
-        
-    end
+  it "can show stored notes titles" do
+    subject.store(mockEmptyNote)
+    expect(subject.titles).to include(mockEmptyNote.title)
+  end
 
-    it "lists existing note titles" do
-        note_1 = new_note("title1", "body1")
-        note_2 = new_note("title2", "body2")
-        notes = [note_1, note_2]
-        expect(notes.titles).to eq([note_1[0], note_2[0]])
-    end
-
-    #it "allows user to pick a note title to read" do
-    #    
-    #end
+  it "can read a notes body and title" do
+    subject.store(mockEmptyNote)
+    expect(subject.read(mockEmptyNote.title)).to eq([mockEmptyNote.title, mockEmptyNote.body])
+  end
 
 end
