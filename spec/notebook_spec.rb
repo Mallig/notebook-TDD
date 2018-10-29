@@ -1,4 +1,5 @@
-require "notes_app"
+require "note"
+require "notebook"
 
 describe Noter do
 
