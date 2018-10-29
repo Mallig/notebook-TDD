@@ -39,6 +39,3 @@ class Note
   end
 
 end
-
-pad = Noter.new
-pad.store(Note.new(""))
